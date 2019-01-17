@@ -9,4 +9,3 @@ Initial commit
 - A protocol is a set of rules that describe how endpoints in a network communicate
     - For example, a message passing protocol could require that messages sent between endpoints be
     JSON-serialized, instead of plaintext.
-    - 

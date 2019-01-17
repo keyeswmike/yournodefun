@@ -11,7 +11,7 @@ requester.on('message', (data) => {
 });
 
 // connect to host and port
-requester.connect('tcp://localhost:60401');
+requester.connect('tcp://127.0.0.1:60401');
 
 // Send request for content
 for(let i = 1; i <= 5; i++){

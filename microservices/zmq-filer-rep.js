@@ -10,6 +10,14 @@ responder.on('message', (data) => {
 
     // Read the file and reply with the content
     fs.readFile(request.path, (err, content) => {
+        if (err) {
+            responder.send(JSON.stringify({
+                content: err,
+                timestamp: Date.now(),
+                pid: process.pid
+            }));
+            throw err;
+        }
         console.log('Sending response content');
         responder.send(JSON.stringify({
             content: content.toString(),

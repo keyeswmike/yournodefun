@@ -21,11 +21,18 @@ if (cluster.isMaster) {
         console.log(`Worker ${worker.process.pid} is online.`);
     });
 
+    cluster.on('exit', (worker, code, signal) => {
+        console.log(`Worker ${worker.process.pid} was killed!`);
+        console.log(`Failure code: ${code}`);
+        console.log(`Failure signal: ${signal}`);
+        cluster.fork();
+    });
+
     // Fork a worker process for each CPU
     for (let i = 0; i < numWorkers; i++){
         cluster.fork();
     }
-} else {
+} else if (cluster.isWorker) {
     const responder = zmq.socket('rep').connect('ipc://filer-dealer.ipc');
 
     responder.on('message', (data) => {

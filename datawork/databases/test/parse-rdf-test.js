@@ -9,4 +9,9 @@ describe('parseRDF', () => {
     it('should be a function', () => {
         expect(parseRDF).to.be.a('function');
     });
+
+    it('should return an object', () => {
+        const book = parseRDF(rdf);
+        expect(book).to.be.an('object');
+    });
 });

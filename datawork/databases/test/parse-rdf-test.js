@@ -27,6 +27,9 @@ describe('parseRDF', () => {
         .that.is.an('array').with.lengthOf(1)
         .and.contains('U')
         .and.to.not.have.members(['I', 'O', 'W', 'X', 'Y']);
+        expect(book).to.have.a.property('sources')
+        .that.is.an('array').with.lengthOf(10)
+        .and.contains('http://www.gutenberg.org/ebooks/132.kindle.noimages');
     });
 
 });

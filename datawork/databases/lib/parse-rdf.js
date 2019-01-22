@@ -9,7 +9,10 @@ module.exports = (rdf) => {
     
     book.title = $('dcterms\\:title').text();
     
-    book.authors = $('pgterms\\:agent pgterms\\:name').toArray().map(elem => $(elem).text());
+    book.authors = $('pgterms\\:agent pgterms\\:name')
+    .toArray()
+    .map(elem => $(elem)
+    .text());
     
     book.subjects = $('[rdf\\:resource$="/LCSH"]')
     .parent()
@@ -22,6 +25,11 @@ module.exports = (rdf) => {
     .find('rdf\\:value')
     .toArray()
     .map(elem => $(elem).text());
+
+    book.sources = $('dcterms\\:hasFormat pgterms\\:file')
+    .toArray()
+    .map(elem => $(elem)
+    .attr('rdf:about'));
 
     return book;
 };

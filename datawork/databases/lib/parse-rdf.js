@@ -16,6 +16,12 @@ module.exports = (rdf) => {
     .find('rdf\\:value')
     .toArray()
     .map(elem => $(elem).text());
-    
+
+    book.lcc = $('[rdf\\:resource$="/LCC"]')
+    .parent()
+    .find('rdf\\:value')
+    .toArray()
+    .map(elem => $(elem).text());
+
     return book;
 };

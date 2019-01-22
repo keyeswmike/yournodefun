@@ -17,6 +17,5 @@ module.exports = (rdf) => {
     .toArray()
     .map(elem => $(elem).text());
     
-    console.log(book.subjects);
     return book;
 };
